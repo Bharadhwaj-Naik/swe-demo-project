@@ -10,7 +10,7 @@ export const useAuth = () => {
   return context;
 };
 
-export const authProvider=  ({children})=> {
+export const AuthProvider=  ({children})=> {
     const [user, setUser] = useState(null);
 const [loading, setLoading] = useState(true);
 const [isAuthenticated, setIsAuthenticated] = useState(false);
