@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import authService from '../../services/authService';
-import { BrainCircuit, Mail, Lock, ArrowRight } from 'lucide-react';
+import { BrainCircuit, Mail, Lock, ArrowRight, User } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const RegisterPage = () => {
@@ -18,6 +18,7 @@ const RegisterPage = () => {
     e.preventDefault();
     if (password.length < 6) {
       setError("Password must be atLeast 6 characters LONG....")
+      return ;
     }
     setError('');
     setLoading(true);
@@ -54,7 +55,7 @@ const RegisterPage = () => {
             {/*Username Field*/}
             <div className='space-y-2'>
               <label className='block text-xs font-semibold text-slate-700 uppercase tracking-wide'>Username</label>
-              <div className='realtive group'>
+              <div className='relative group'>
                 <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors duration-200 ${focusedField === "username" ? "text-emerald-500" : " text-slate-400"
                   }`}>
                   <User className="h-5 w-5" strokeWidth={2} />
@@ -64,7 +65,7 @@ const RegisterPage = () => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   onFocus={() => setFocusedField("username")}
-                  onBlur={() => setFocusedField("null")}
+                  onBlur={() => setFocusedField(null)}
                   className='w-full h-12 pl-12 pr-4 border-3 border-slate-200 rounded-xl bg-slate-50/50 text-slate-900 placeholder-slate-400 text-smm font-medium transition-all duration-200 focus:outline-none focus:border-emerald-500 focus:bg-white focus:shadow-lg focus:shadow-emerald-500/10'
                   placeholder='Your Username'
                 />
@@ -77,22 +78,22 @@ const RegisterPage = () => {
                 <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors duration-200  ${focusedField === "email" ? "etxt-emerald-500" : " text-slate-400"
                   }`}>
                   <Mail className='h-5 w-5' strokeWidth={2} />
+                  </div>
                   <input
                     type="email"
-                    value={username}
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     onFocus={() => setFocusedField("email")}
-                    onBlur={() => setFocusedField("null")}
+                    onBlur={() => setFocusedField(null)}
                     className='w-full h-12 pl-12 pr-4 border-3 border-slate-200 rounded-xl bg-slate-50/50 text-slate-900 placeholder-slate-400 text-smm font-medium transition-all duration-200 focus:outline-none focus:border-emerald-500 focus:bg-white focus:shadow-lg focus:shadow-emerald-500/10'
                     placeholder='name@gmail.com'
                   />
-                </div>
               </div>
               {/*Password Field*/}
               <div className='space-y-2'>
                 <label className='block text-xs font-semibold text-slate-700 uppercase tracking-wide'>Password</label>
                 <div className='relative group'>
-                  <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors duration-200 ${focusedField === "password" ? "etxt-emerald-500" : " text-slate-400"
+                  <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors duration-200 ${focusedField === "password" ? "text-emerald-500" : " text-slate-400"
                     }`}>
                     <Lock className="h-5 w-5" strokeWidth={2} />
                   </div>
@@ -101,8 +102,8 @@ const RegisterPage = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     onFocus={() => setFocusedField("password")}
-                    onBlur={() => setFocusedField("null")}
-                    className='w-full h-12 pl-12 pr-4 border-3 border-slate-200 rounded-xl bg-slate-50/50 text-slate-900 placeholder-slate-400 text-smm font-medium transition-all duration-200 focus:outline-none focus:border-emerald-500 focus:bg-white focus:shadow-lg focus:shadow-emerald-500/10'
+                    onBlur={() => setFocusedField(null)}
+                    className='w-full h-12 pl-12 pr-4 border-2 border-slate-200 rounded-xl bg-slate-50/50 text-slate-900 placeholder-slate-400 text-sm font-medium transition-all duration-200 focus:outline-none focus:border-emerald-500 focus:bg-white focus:shadow-lg focus:shadow-emerald-500/10'
                     placeholder='.........'
                   />
                 </div>
@@ -131,7 +132,7 @@ const RegisterPage = () => {
                     </>
                   )}
                 </span>
-                <div className='absolute inset-0 bg-linear-to-r from-white/0 via-white/20 to-white/0 -translate-x-[-100%] group-hover:translate-x-[-100%]  transition-transform duration-700' />
+                <div className='absolute inset-0 bg-linear-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full  transition-transform duration-700' />
               </button>
             </div>
           </div>
